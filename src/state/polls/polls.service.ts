@@ -39,7 +39,6 @@ export class PollsService {
                                 poll.id,
                                 shuffle(poll.options).map(poll => poll.imdbId)
                             );
-                            console.log(pollOptionOrderMap);
                         });
                 })
             )

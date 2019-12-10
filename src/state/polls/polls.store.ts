@@ -30,9 +30,6 @@ export class PollsStore extends EntityStore<PollsState> {
     }
 
     setPollOptionOrder(id: string, order: PollOptionOrder) {
-        console.log(`setting poll option order`)
-        console.log(id)
-        console.log(order)
         this.update(state => ({
             ...state,
             ui: {

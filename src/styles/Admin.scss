@@ -1,81 +1,87 @@
-@import './_util/typography';
-@import './_util/button';
-@import './_util/breakpoints';
+@import "./_util/typography";
+@import "./_util/button";
+@import "./_util/breakpoints";
 
 $admin-color: #f368e0;
 
 .Admin {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    text-align: right;
-    z-index: 99;
-    max-height: calc(100vh - 20px);
-    overflow-y: auto;
+	position: fixed;
+	top: 10px;
+	right: 10px;
+	text-align: right;
+	z-index: 99;
+	max-height: calc(100vh - 20px);
+	overflow-y: auto;
 
-    &::-webkit-scrollbar {
-        width: 10x;
-        background-color: rgba($admin-color, 0.5);
-    }
+	&::-webkit-scrollbar {
+		width: 10x;
+		background-color: rgba($admin-color, 0.5);
+	}
 
-    &::-webkit-scrollbar-thumb {
-        background-color: #333;
-    }
-
+	&::-webkit-scrollbar-thumb {
+		background-color: #333;
+	}
 }
 
 .AdminSection {
-    @include text_mono();
-    display: block;
-    background-color: rgba($admin-color, 0.8);
-    color: white;
-    backdrop-filter: blur(3px) brightness(50%);
-    padding: 10px;
-    border-radius: 2px;
-    margin-top: 10px;
-    max-width: 75vw;
+	@include text_mono();
+	display: block;
+	background-color: rgba($admin-color, 0.8);
+	color: white;
+	backdrop-filter: blur(3px) brightness(50%);
+	padding: 10px;
+	border-radius: 2px;
+	margin-top: 10px;
+	max-width: 75vw;
 
-    @include breakpoint('md') {
-        max-width: 33vw;
-    }
-    
-    &:first-child {
-        margin-top: 0;
-    }
+	&--disabled {
+		opacity: 0.6;
+		filter: grayscale(1);
+	}
 
-    label {
-        display: block;
-        margin-top: 10px;
-    }
+	@include breakpoint("md") {
+		max-width: 33vw;
+	}
 
-    select, input:not([type="checkbox"]) {
-        @include text_mono();
-        width: 100%;
-        max-width: 100%;
-    }
+	&:first-child {
+		margin-top: 0;
+	}
 
-    button {
-        @include button();
-        width: 100%;
-        margin-top: 20px;
-    }
+	label {
+		display: block;
+		margin-top: 10px;
+	}
 
-    .AdminPoll {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-top: 10px;
+	select,
+	input:not([type="checkbox"]) {
+		@include text_mono();
+		width: 100%;
+		max-width: 100%;
+	}
 
-        input, label {
-            display: inline-block;
-            font-size: 80%;
-            margin-top: 0;
-        }
-        .AdminPoll-title{
-            width: 70%
-        }
-        .AdminPoll-order {
-            width: 2em;
-        }
-    }
+	button {
+		@include button();
+		width: 100%;
+		margin-top: 20px;
+	}
+
+	.AdminPoll {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-top: 10px;
+
+		input,
+		label {
+			display: inline-block;
+			font-size: 80%;
+			margin-top: 0;
+		}
+		.AdminPoll-title {
+			width: 70%;
+		}
+		.AdminPoll-order {
+			width: 2em;
+		}
+	}
 }
