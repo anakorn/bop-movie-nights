@@ -27,4 +27,5 @@ export type PollOption = {
     imdbId: string;
     count: number;
     hasVotedUids: string[];
+    submittedUid: string;
 }

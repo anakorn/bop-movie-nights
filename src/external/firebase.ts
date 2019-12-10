@@ -95,13 +95,14 @@ export async function createPoll(
 	});
 }
 
-export async function addPollOption(pollId: string, imdbId: string) {
+export async function addPollOption(pollId: string, imdbId: string, submittedUid: string) {
 	return updatePollOptions(pollId, (options: PollOption[]) =>
 		options.concat([
 			{
 				imdbId,
 				hasVotedUids: [],
-				count: 0
+				count: 0,
+				submittedUid: submittedUid
 			}
 		])
 	);

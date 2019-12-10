@@ -33,7 +33,7 @@ export function usePollsFacade(): [
     Function,
     Function,
     (title: string, order: number) => Promise<_firebase.firestore.DocumentReference> | void,
-    (pollId: string, imdbId: string) => void,
+    (pollId: string, imdbId: string, submittedUid: string) => void,
     (requests: UpdatePollRequest[]) => void,
     (userId: string, pollId: string, imdbId: string) => Promise<void>,
     () => Promise<void>,

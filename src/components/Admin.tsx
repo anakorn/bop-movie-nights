@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useMemo } from "react";
 import moment from "moment";
 
+import { useUserFacade } from "../hooks/user.hook";
 import { useMoviesFacade } from "../hooks/movies.hook";
 import { useUpcomingMovieFacade } from "../hooks/upcoming-movie.hook";
 import { usePollsFacade } from "../hooks/polls.hook";
@@ -30,8 +31,9 @@ type NewMovieForm = {
 
 const Admin: React.FC = () => {
 	// TODO: add auth into this
-	const userIsAdmin = false;
-	const [useAdmin, setAdmin] = useState(false);
+	const userIsAdmin = true;
+	const [useAdmin, setAdmin] = useState(true);
+	const [{ user }] = useUserFacade();
 	const [moviesState, getMovieById, addMovie] = useMoviesFacade();
 	const [upcomingMovie, setUpcomingMovie] = useUpcomingMovieFacade();
 	const [
@@ -288,7 +290,9 @@ const Admin: React.FC = () => {
 				<button
 					type="button"
 					onClick={() => {
-						addPollOption(newPollOptionForm.pollId, newPollOptionForm.imdbId);
+						if (user) {
+							addPollOption(newPollOptionForm.pollId, newPollOptionForm.imdbId, user.uid);
+						}
 					}}
 				>
 					Add Poll Option

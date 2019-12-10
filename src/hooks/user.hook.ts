@@ -99,7 +99,7 @@ export function useUserFacade(): [
 		func: T
 	): (...funcArgs: Parameters<T>) => ReturnType<T> | void {
 		return (...args: Parameters<T>): ReturnType<T> | void => {
-			if (true) {
+			if (state.user) {
 				return func(...args);
 			}
 			return userService.showLogin(true);
