@@ -9,7 +9,8 @@ interface PollDetailProps {
     movie: Movie | null,
     saveCallback: Function,
     removeCallback: Function,
-    count: number
+    count: number,
+    disableVoting: boolean
 }
 
 const PollDetail: React.FC<PollDetailProps> = ({
@@ -17,7 +18,7 @@ const PollDetail: React.FC<PollDetailProps> = ({
     saveCallback,
     removeCallback,
     count,
-
+    disableVoting,
 }) => {
     const [isTrailerOpen, setTrailerOpen] = useState(false);
     const [trailerUrl, setTrailerUrl] = useState(null);
@@ -76,7 +77,7 @@ const PollDetail: React.FC<PollDetailProps> = ({
             </div>
             <div className="PollDetail-actions">
                 <button data-url={movie.trailerUrl} onClick={openTrailer}>Trailer</button>
-                {userState.user
+                {!disableVoting && (userState.user
                     ? (
                         <button
                             onClick={hasVotedForActiveOption() ? handleRemove : handleSave}
@@ -90,7 +91,7 @@ const PollDetail: React.FC<PollDetailProps> = ({
                             <span style={{ marginRight: 4 }}>Login to Vote</span>
                             <span>({count || 0})</span>
                         </button>
-                    )
+                    ))
                 }
             </div>
             <YoutubeLightbox

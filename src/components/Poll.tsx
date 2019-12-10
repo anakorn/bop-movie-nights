@@ -72,7 +72,8 @@ const Poll: React.FC = () => {
                 movie={currentMovie}
                 saveCallback={voteForActiveOption}
                 removeCallback={removeVoteForActiveOption}
-                count={activePollOption ? activePollOption.count : 0} />
+                count={activePollOption ? activePollOption.count : 0}
+                disableVoting={activePoll.archived} />
         </div>
     )
 }

@@ -21,6 +21,7 @@ const App: React.FC = () => {
             <LoginConfirm />
             <Header />
             <div className="PollArea Container">
+                <h2 className="PollAreaHeader">Vote For The Next Movie!</h2>
                 <Tabs />
                 <Poll />
             </div>
