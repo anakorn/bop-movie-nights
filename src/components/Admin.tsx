@@ -289,9 +289,21 @@ const Admin: React.FC = () => {
 				</select>
 				<button
 					type="button"
-					onClick={() => {
+					onClick={async () => {
 						if (user) {
-							addPollOption(newPollOptionForm.pollId, newPollOptionForm.imdbId, user.uid);
+							try {
+								await addPollOption(
+									newPollOptionForm.pollId,
+									newPollOptionForm.imdbId,
+									user.uid
+								);
+								window.alert(
+									`Successfully added poll option movie ${newPollOptionForm.imdbId} for poll ${newPollOptionForm.pollId} for user ${user.uid}`
+								);
+							} catch (e) {
+								console.error(e);
+								window.alert(e);
+							}
 						}
 					}}
 				>
@@ -328,12 +340,18 @@ const Admin: React.FC = () => {
 				/>
 				<button
 					type="button"
-					onClick={() => {
-						addMovie(newMovieForm.imdbId, newMovieForm.trailerUrl);
+					onClick={async () => {
 						setNewMovieForm({
 							imdbId: "",
 							trailerUrl: ""
 						});
+						try {
+							await addMovie(newMovieForm.imdbId, newMovieForm.trailerUrl);
+							window.alert(`Successfully added movie ${newMovieForm.imdbId}`);
+						} catch (e) {
+							console.error(e);
+							window.alert(e);
+						}
 					}}
 				>
 					Add Movie

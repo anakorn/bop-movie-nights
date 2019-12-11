@@ -95,17 +95,26 @@ export async function createPoll(
 	});
 }
 
-export async function addPollOption(pollId: string, imdbId: string, submittedUid: string) {
-	return updatePollOptions(pollId, (options: PollOption[]) =>
-		options.concat([
+export async function addPollOption(
+	pollId: string,
+	imdbId: string,
+	submittedUid: string
+) {
+	return updatePollOptions(pollId, (options: PollOption[]) => {
+		if (options.find(option => option.submittedUid === submittedUid)) {
+			throw new Error(
+				`User ${submittedUid} has already submitted movie ${imdbId} in poll ${pollId}`
+			);
+		}
+		return options.concat([
 			{
 				imdbId,
 				hasVotedUids: [],
 				count: 0,
 				submittedUid: submittedUid
 			}
-		])
-	);
+		]);
+	});
 }
 
 export type UpdatePollRequest = {
@@ -133,12 +142,16 @@ export async function addMovie(
 	imdbId: string,
 	trailerUrl: string
 ): Promise<void> {
-	return db
-		.collection("movies")
-		.doc(imdbId)
-		.set({
+	const movieDocRef = db.collection("movies").doc(imdbId);
+	return db.runTransaction(async transaction => {
+		const movieDoc = await transaction.get(movieDocRef);
+		if (movieDoc.exists) {
+			throw new Error(`Movie document with ID ${imdbId} already exists.`);
+		}
+		transaction.set(movieDocRef, {
 			trailerUrl
 		});
+	});
 }
 
 export async function setUpcomingMovie(
