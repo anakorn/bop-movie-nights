@@ -1,10 +1,20 @@
 import React, { useCallback, useState } from 'react';
 import Lightbox from 'lightbox-react';
+import { User } from "../state/user/user.model";
+import { useMoviesFacade } from "../hooks/movies.hook";
 import { usePollsFacade } from '../hooks/polls.hook';
 import { useUserFacade } from '../hooks/user.hook';
 import '../styles/Nominate.scss';
 
-const NominateForm: React.FC = () => {
+interface NominateFormProps {
+    onSubmit: () => any,
+    user: User | null,
+}
+
+const NominateForm: React.FC<NominateFormProps> = ({
+    onSubmit,
+    user,
+}) => {
     const [
         {
             activePoll
@@ -20,15 +30,31 @@ const NominateForm: React.FC = () => {
         ,
         ,
     ] = usePollsFacade();
+    const [, , addMovie] = useMoviesFacade();
 
-/*     const handleSubmit = useCallback(() => {
+    const handleSubmit = useCallback(() => {
         const idElement = document.getElementById('nominate-id') as HTMLInputElement;
         const trailerElement = document.getElementById('nominate-trailer') as HTMLInputElement;
-
-        if (idElement && idElement.value && trailerElement && trailerElement.value) {
-            addPollOption(activePoll.id, idElement.value, )
+        if (!idElement || !idElement.value) {
+            console.log('no id');
+            return;
         }
-    }, [setUISubmit, setEmail]); */
+        if (!trailerElement || !trailerElement.value) {
+            console.log('no trailer');
+            return;
+        }
+        if (!activePoll || !activePoll.id) {
+            console.log('no active poll');
+            return;
+        }
+        if (!user || !user.uid) {
+            console.log('no user id');
+            return;
+        }
+        addMovie(idElement.value, trailerElement.value);
+        addPollOption(activePoll.id, idElement.value, user.uid);
+        onSubmit();
+    }, [onSubmit, activePoll, addPollOption, user, addMovie]);
 
     return (
         <div className="NominateForm Lightbox-container">
@@ -59,7 +85,7 @@ const NominateForm: React.FC = () => {
                 />
             </div>
             <div className="Lightbox-section">
-                <button>Submit Nomination</button>
+                <button onClick={handleSubmit}>Submit Nomination</button>
             </div>
         </div>
     );

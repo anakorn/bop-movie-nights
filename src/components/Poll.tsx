@@ -66,7 +66,6 @@ const Poll: React.FC = () => {
     if (!(activePoll)) {
         return null;
     }
-
     return (
         <div className="Poll">
             <Carousel
