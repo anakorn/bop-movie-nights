@@ -13,7 +13,8 @@ const Poll: React.FC = () => {
         {
             activePoll,
             activePollOption,
-            pollOptionOrderMap
+            pollOptionOrderMap,
+            canSubmitMoviesToActivePoll,
         },
         setActivePoll,
         setActivePollOption,
@@ -79,7 +80,7 @@ const Poll: React.FC = () => {
                 removeCallback={removeVoteForActiveOption}
                 count={activePollOption ? activePollOption.count : 0}
                 disableVoting={activePoll.archived} />
-            <Nominate />
+            { !activePoll.archived && <Nominate /> }
         </div>
     )
 }
