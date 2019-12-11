@@ -79,7 +79,7 @@ const Poll: React.FC = () => {
                 removeCallback={removeVoteForActiveOption}
                 count={activePollOption ? activePollOption.count : 0}
                 disableVoting={activePoll.archived} />
-            <Nominate/>
+            <Nominate />
         </div>
     )
 }

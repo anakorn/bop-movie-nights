@@ -18,9 +18,9 @@ const Login: React.FC = () => {
     }, [setUISubmit, setEmail]);
 
     const LoginContent = useMemo(() => (
-        <div className="Login">
-            <h2 className="Login-title">Login to Vote</h2>
-            <div className={submitted ? "Login-step" : "Login-step Login-step--active"}>
+        <div className="Login Lightbox-container">
+            <h2 className="Login-title Lightbox-title">Login to Vote</h2>
+            <div className={submitted ? "Login-step Lightbox-section" : "Login-step Lightbox-section Login-step--active"}>
                 <h3>Step 1: <label htmlFor="login-email">Login with email</label></h3>
                 <small>We only send you a sign-in link, no other emails!</small>
                 <input
@@ -33,7 +33,7 @@ const Login: React.FC = () => {
                 />
                 <button onClick={handleSubmit} disabled={submitted}>Submit</button>
             </div>
-            <div className={submitted ? "Login-step Login-step--active" : "Login-step"}>
+            <div className={submitted ? "Login-step Lightbox-section Login-step--active" : "Login-step Lightbox-section"}>
                 <h3>Step 2: Check your email</h3>
                 {email && <small>Email sent to <strong>{email}</strong></small>}
             </div>
