@@ -1,0 +1,42 @@
+@import './_util/color';
+@import './_util/button';
+@import './_util/breakpoints';
+
+.Nominate {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(white, 0.1);
+
+    @include breakpoint('sm') {
+        margin-top: 60px;
+        padding-top: 60px;    
+    }
+    .Nominate-title {
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        margin-bottom: 10px;
+    
+        @include breakpoint('md') {
+            display: inline-block;
+            margin-right: 1rem;
+        }
+    }
+    
+    .Nominate-button {
+        @include button();
+        text-align: center;
+        background-color: $color-yellow;
+        display: inline-block;
+        margin: 0 0 0;
+        width: 100%;
+    
+        @include breakpoint('md') {
+            max-width: 300px;
+        } 
+    
+        .Nominate-icon {
+            margin-right: 0.5rem;
+        }
+    }
+}

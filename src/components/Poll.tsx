@@ -1,6 +1,7 @@
 import React, { useMemo, useCallback } from 'react';
 import Carousel from './Carousel';
 import PollDetail from './PollDetail';
+import Nominate from './Nominate';
 import '../styles/Poll.scss';
 import { usePollsFacade } from '../hooks/polls.hook';
 import { useMoviesFacade } from '../hooks/movies.hook';
@@ -67,13 +68,18 @@ const Poll: React.FC = () => {
 
     return (
         <div className="Poll">
-            <Carousel imgs={imgs || []} activeCallback={activeCallback} active={activeIndex} />
+            <Carousel
+                imgs={imgs || []}
+                activeCallback={activeCallback}
+                active={activeIndex}
+            />
             <PollDetail
                 movie={currentMovie}
                 saveCallback={voteForActiveOption}
                 removeCallback={removeVoteForActiveOption}
                 count={activePollOption ? activePollOption.count : 0}
                 disableVoting={activePoll.archived} />
+            <Nominate/>
         </div>
     )
 }

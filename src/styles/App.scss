@@ -11,7 +11,7 @@
 .PollArea.Container {
     background-color: $color-darkest-gray;
     @include breakpoint('sm') {
-        padding: 30px 120px;
+        padding: 60px 120px;
     }
 }
 
