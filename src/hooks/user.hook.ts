@@ -44,7 +44,7 @@ export function useUserFacade(): [
 	});
 	const login = async (email: string) => {
 		const actionCodeSettings = {
-			url: "https://movie-night.club",
+			url: "http://localhost:3000",
 			handleCodeInApp: true
 		};
 		if (email && email.length > 0) {
