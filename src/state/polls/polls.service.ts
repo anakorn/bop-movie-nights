@@ -18,7 +18,8 @@ export class PollsService {
                 options: poll.options.map((option): PollOption => ({
                     imdbId: option.imdbId,
                     count: option.count,
-                    hasVotedUids: option.hasVotedUids
+                    hasVotedUids: option.hasVotedUids,
+                    submittedUid: option.submittedUid
                 })),
                 archived: poll.archived,
                 order: poll.order

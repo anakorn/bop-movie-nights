@@ -44,7 +44,7 @@ export function useUserFacade(): [
 	});
 	const login = async (email: string) => {
 		const actionCodeSettings = {
-			url: "https://movie-night.club",
+			url: "http://localhost:3000",
 			handleCodeInApp: true
 		};
 		if (email && email.length > 0) {
@@ -99,7 +99,7 @@ export function useUserFacade(): [
 		func: T
 	): (...funcArgs: Parameters<T>) => ReturnType<T> | void {
 		return (...args: Parameters<T>): ReturnType<T> | void => {
-			if (true) {
+			if (state.user) {
 				return func(...args);
 			}
 			return userService.showLogin(true);
