@@ -1,6 +1,7 @@
 @import './_util/color';
 @import './_util/button';
 @import './_util/breakpoints';
+@import './_util/typography';
 
 .Nominate {
     margin-top: 40px;
@@ -39,4 +40,10 @@
             margin-right: 0.5rem;
         }
     }
+}
+
+.Nominate-error {
+    @include text_utility();
+    color: darkred;
+    font-weight: bold;
 }

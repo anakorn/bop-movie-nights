@@ -21,9 +21,9 @@ const LoginConfirm: React.FC = () => {
     }, [setEmail]);
 
     const LoginContent = useMemo(() => (
-        <div className="Login">
-            <h2 className="Login-title">Confirm Email</h2>
-            <div className="Login-step Login-step--active">
+        <div className="Login Lightbox-container">
+            <h2 className="Login-title Lightbox-title">Confirm Email</h2>
+            <div className="Login-step Login-step--active Lightbox-section">
                 <h3>Signing in with a new device?</h3>
                 <small><label htmlFor="loginconfirm-email">Confirm your email</label></small>
                 <input
@@ -35,7 +35,7 @@ const LoginConfirm: React.FC = () => {
                 />
                 <button onClick={handleSubmit}>Submit</button>
             </div>
-            <div className="Login-step Login-step--active">
+            <div className="Login-step Login-step--active Lightbox-section">
                 <h3>Not your login link?</h3>
                 <a className="LoginConfirm-cancel" href="/">Continue without Logging In</a>
             </div>

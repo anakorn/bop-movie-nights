@@ -31,30 +31,41 @@ const NominateForm: React.FC<NominateFormProps> = ({
         ,
     ] = usePollsFacade();
     const [, , addMovie] = useMoviesFacade();
+    const [error, setError] = useState<String | null>(null);
 
-    const handleSubmit = useCallback(() => {
+    const handleSubmit = useCallback(async () => {
         const idElement = document.getElementById('nominate-id') as HTMLInputElement;
         const trailerElement = document.getElementById('nominate-trailer') as HTMLInputElement;
         if (!idElement || !idElement.value) {
-            console.log('no id');
+            setError('IMDB id is required');
             return;
         }
         if (!trailerElement || !trailerElement.value) {
-            console.log('no trailer');
+            setError('Trailer is required');
             return;
         }
         if (!activePoll || !activePoll.id) {
-            console.log('no active poll');
+            setError('Internal Error: Poll not found. Please refresh.');
             return;
         }
         if (!user || !user.uid) {
-            console.log('no user id');
+            setError('Internal Error: No user found. Please refresh.');
             return;
         }
-        addMovie(idElement.value, trailerElement.value);
-        addPollOption(activePoll.id, idElement.value, user.uid);
+        setError(null);
+        try {
+            await addMovie(idElement.value, trailerElement.value);
+        } catch(e) {
+            console.error(e);
+        }
+        try {
+            await addPollOption(activePoll.id, idElement.value, user.uid);
+        } catch(e) {
+            console.error(e);
+            window.alert(e);
+        }
         onSubmit();
-    }, [onSubmit, activePoll, addPollOption, user, addMovie]);
+    }, [setError, onSubmit, activePoll, addPollOption, user, addMovie]);
 
     return (
         <div className="NominateForm Lightbox-container">
@@ -85,6 +96,9 @@ const NominateForm: React.FC<NominateFormProps> = ({
                 />
             </div>
             <div className="Lightbox-section">
+                { error && (
+                    <small className="Nominate-error">{error}</small>
+                )}
                 <button onClick={handleSubmit}>Submit Nomination</button>
             </div>
         </div>
