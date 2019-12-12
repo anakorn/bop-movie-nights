@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useCallback, useEffect, useLayoutEffect } from 'react';
 import classNames from 'classnames';
+import { useSwipeable } from 'react-swipeable';
 import '../styles/Carousel.scss';
 
 interface Image {
@@ -21,6 +22,10 @@ const Carousel: React.FC<CarouselProps> = ({
 
     const [activeIndex, setActive] = useState(active || 0);
     const [rootEl, setRoot] = useState<HTMLDivElement | null>(null);
+    const swipeHandlers = useSwipeable({
+        onSwipedRight: () => setActive(Math.max(activeIndex-1, 0)),
+        onSwipedLeft: () => setActive(Math.min(activeIndex+1, imgs.length-1))
+    });
 
     const handleImageClick = useCallback((event) => {
         const {
@@ -102,8 +107,13 @@ const Carousel: React.FC<CarouselProps> = ({
     }, [setActive, activeIndex, imgs]);
 
     return (
-        <div ref={setRoot} onKeyDown={handleKeyDown} className="Carousel" tabIndex={0}>
-            <div className="CarouselSlider">
+        <div
+            ref={setRoot}
+            onKeyDown={handleKeyDown}
+            className="Carousel"
+            tabIndex={0}
+        >
+            <div className="CarouselSlider" {...swipeHandlers}>
                 { images }
             </div>
         </div>
