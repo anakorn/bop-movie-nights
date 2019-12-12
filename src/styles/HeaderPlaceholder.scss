@@ -1,68 +1,68 @@
-@import './_util/color';
+@import "./_util/color";
 
 @keyframes background-slide {
-    to {
-        background-position: -100%;
-    }
+	to {
+		background-position: -100%;
+	}
 }
 
 .HeaderPlaceholder {
-    opacity: 1;
-    background: $color-darkest-gray;
+	opacity: 1;
+	background: $color-dark;
 
-    .Container {
-        width: 60vw;
-    }
+	.Container {
+		width: 60vw;
+	}
 
-    // .Header-title,
-    // .Header-genre,
-    // .Header-trailer,
-    // .Header-plot,
-    // .Header-runtime,
-    // .Header-rating,
-    // .Header-subtitle {
-    //     background: linear-gradient(to right, $color-yellow 0%, #ffdc4f 50%, $color-yellow 100%);
-    //     // background-attachment: fixed;
-    //     animation: background-slide 2s infinite alternate;
-    // }
+	// .Header-title,
+	// .Header-genre,
+	// .Header-trailer,
+	// .Header-plot,
+	// .Header-runtime,
+	// .Header-rating,
+	// .Header-subtitle {
+	//     background: linear-gradient(to right, $color-yellow 0%, #ffdc4f 50%, $color-yellow 100%);
+	//     // background-attachment: fixed;
+	//     animation: background-slide 2s infinite alternate;
+	// }
 
-    // .Container {
-    //     width: 60vw;
-    // }
-    // .Header-title {
-    //     width: 50%;
-    //     height: 50px;
-    //     margin-top: 30px;
-    //     margin-bottom: 24px;
-    // }
-    // .Header-genre {
-    //     width: 10%;
-    //     height: 26px;
-    //     padding: 0;
-    //     margin-right: 15px;
-    // }
-    // .Header-trailer {
-    //     width: 20%;
-    //     height: 40px;
-    //     cursor: default !important;
-    //     border: 0;
-    //     border-radius: 0;
-    //     margin-top: 12px;
-    // }
-    // .Header-plot {
-    //     width: 100%;
-    //     height: 52px;
-    // }
-    // .Header-runtime {
-    //     width: 8%;
-    //     height: 21px;
-    // }
-    // .Header-rating {
-    //     width: 3%;
-    //     height: 21px;
-    // }
-    // .Header-subtitle {
-    //     width: 80%;
-    //     height: 52px;
-    // }
+	// .Container {
+	//     width: 60vw;
+	// }
+	// .Header-title {
+	//     width: 50%;
+	//     height: 50px;
+	//     margin-top: 30px;
+	//     margin-bottom: 24px;
+	// }
+	// .Header-genre {
+	//     width: 10%;
+	//     height: 26px;
+	//     padding: 0;
+	//     margin-right: 15px;
+	// }
+	// .Header-trailer {
+	//     width: 20%;
+	//     height: 40px;
+	//     cursor: default !important;
+	//     border: 0;
+	//     border-radius: 0;
+	//     margin-top: 12px;
+	// }
+	// .Header-plot {
+	//     width: 100%;
+	//     height: 52px;
+	// }
+	// .Header-runtime {
+	//     width: 8%;
+	//     height: 21px;
+	// }
+	// .Header-rating {
+	//     width: 3%;
+	//     height: 21px;
+	// }
+	// .Header-subtitle {
+	//     width: 80%;
+	//     height: 52px;
+	// }
 }

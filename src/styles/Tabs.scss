@@ -1,109 +1,108 @@
-@import './_util/typography';
-@import './_util/breakpoints'; 
-@import './_util/color';
+@import "./_util/typography";
+@import "./_util/breakpoints";
+@import "./_util/color";
 
 .TabbedContent {
-    $secondary-color: $color-yellow;
-    padding-top: 10px;
+	padding-top: 10px;
 
-    .Tabs {
-        list-style: none;
-        padding: 0;
-        margin: 0 0 40px 0;
-        max-width: calc(100vw - 60px);
-        white-space: nowrap;
-        overflow-x: auto;
+	.Tabs {
+		list-style: none;
+		padding: 0;
+		margin: 0 0 40px 0;
+		max-width: calc(100vw - 60px);
+		white-space: nowrap;
+		overflow-x: auto;
 
-        &::-webkit-scrollbar {
-            height: 3px;
-        }
-         
-        &::-webkit-scrollbar-thumb {
-          background-color: #ddd;
-          outline: 1px solid rgb(164, 165, 165);
-        }
+		&::-webkit-scrollbar {
+			height: 3px;
+		}
 
-        &::-webkit-scrollbar-track {
-            background-color: transparent;
-        }
+		&::-webkit-scrollbar-thumb {
+			background-color: #ddd;
+			outline: 1px solid rgb(164, 165, 165);
+		}
 
-        @include breakpoint('sm') {
-            max-width: calc(100vw - 240px);
-        }
+		&::-webkit-scrollbar-track {
+			background-color: transparent;
+		}
 
-        .Tab {
-            display: inline-block;
-            margin-right: 20px;
-            position: relative;
-            border-radius: 2px;
-            background: none;
-            
-            &--active {
-                .TabButton {
-                    color: black;
-                    font-weight: normal;
+		@include breakpoint("sm") {
+			max-width: calc(100vw - 240px);
+		}
 
-                    &::before {
-                        transform: scaleY(1);
-                    }
+		.Tab {
+			display: inline-block;
+			margin-right: 20px;
+			position: relative;
+			border-radius: 2px;
+			background: none;
 
-                    &:hover {
-                        cursor: default;
+			&--active {
+				.TabButton {
+					color: black;
+					font-weight: normal;
 
-                        &::before {
-                            transform: scaleY(1);
-                        }
-                    }
-                }
-            }
+					&::before {
+						transform: scaleY(1);
+					}
 
-            &:last-child {
-                margin-right: 0;
-            }
-        }
+					&:hover {
+						cursor: default;
 
-        .TabButton {
-            @include text_mono();
-            z-index: 1;
-            position: relative;
-            padding: 20px 30px;
-            color: $secondary-color;
-            background: none;
-            border: 0;
-            font-weight: bolder;
+						&::before {
+							transform: scaleY(1);
+						}
+					}
+				}
+			}
 
-            &::before {
-                content: '';
-                position: absolute;
-                z-index: -1;
-                width: 100%;
-                height: 100%;
-                top: 0;
-                left: 0;
-                transform: scaleY(0);
-                transition: transform 200ms ease-in;
-                transform-origin: top;
-                background-color: white;
-                pointer-events: none;
-            }
+			&:last-child {
+				margin-right: 0;
+			}
+		}
 
-            small {
-                z-index: -2;
-                display: block;
-                color: $color-light-gray;
-                position: absolute;
-                left: 50%;
-                transform: translateX(-50%);
-                top: 5px;
-                text-transform: lowercase;
-            }
+		.TabButton {
+			@include text_mono();
+			z-index: 1;
+			position: relative;
+			padding: 20px 30px;
+			color: $color-main;
+			background: none;
+			border: 0;
+			font-weight: bolder;
 
-            &:hover {
-                cursor: pointer;
-                &::before {
-                    transform: scaleY(0.3);
-                }
-            }
-        }
-    }
+			&::before {
+				content: "";
+				position: absolute;
+				z-index: -1;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				transform: scaleY(0);
+				transition: transform 200ms ease-in;
+				transform-origin: top;
+				background-color: $color-shade-light;
+				pointer-events: none;
+			}
+
+			small {
+				z-index: -2;
+				display: block;
+				color: $color-light-gray;
+				position: absolute;
+				left: 50%;
+				transform: translateX(-50%);
+				top: 5px;
+				text-transform: lowercase;
+			}
+
+			&:hover {
+				cursor: pointer;
+				&::before {
+					transform: scaleY(0.3);
+				}
+			}
+		}
+	}
 }

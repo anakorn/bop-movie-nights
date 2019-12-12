@@ -140,6 +140,9 @@ export function useUserSetup() {
 	const [, , , , , showLoginConfirm, loginConfirm] = useUserFacade();
 
 	useEffect(() => {
+		userService.setUser({
+			uid: "whatever-faker"
+		});
 		if (firebase.auth().isSignInWithEmailLink(window.location.href)) {
 			// Additional state parameters can also be passed via URL.
 			// This can be used to continue the user's intended action before triggering

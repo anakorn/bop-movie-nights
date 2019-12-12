@@ -1,134 +1,135 @@
-@import './_util/breakpoints';
-@import './_util/typography';
-@import './_util/color';
+@import "./_util/breakpoints";
+@import "./_util/typography";
+@import "./_util/color";
 
 .Poll {
-    $secondary-color: #f1c40f;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    margin-top: 20px;
+	$secondary-color: #f1c40f;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	margin-top: 20px;
 
-    .PollOption {
-        display: inline-block;
-        width: 100%;
-        position: relative;
-        overflow: hidden;
-        border-radius: 2px;
+	.PollOption {
+		display: inline-block;
+		width: 100%;
+		position: relative;
+		overflow: hidden;
+		border-radius: 2px;
 
-        @include breakpoint('xs') {
-            width: calc(50% - 10px);
-            &:nth-child(2n) {
-                margin-left: 20px;
-            }
-        }
+		@include breakpoint("xs") {
+			width: calc(50% - 10px);
+			&:nth-child(2n) {
+				margin-left: 20px;
+			}
+		}
 
-        @include breakpoint('sm') {
-            width: calc(33.33% - 20px);
-            margin-left: 30px;
-            margin-bottom: 10px;
+		@include breakpoint("sm") {
+			width: calc(33.33% - 20px);
+			margin-left: 30px;
+			margin-bottom: 10px;
 
-            &:nth-child(2n) {
-                margin-left: 30px; 
-            }
-            &:nth-child(3n+1) {
-                margin-left: 0;
-            }
-        }
+			&:nth-child(2n) {
+				margin-left: 30px;
+			}
+			&:nth-child(3n + 1) {
+				margin-left: 0;
+			}
+		}
 
-        @include breakpoint('lg') {
-            width: calc(25% - 30px);
-            margin-left: 40px;
-            margin-bottom: 20px;
+		@include breakpoint("lg") {
+			width: calc(25% - 30px);
+			margin-left: 40px;
+			margin-bottom: 20px;
 
-            &:nth-child(2n) {
-                margin-left: 40px; 
-            }
-            &:nth-child(3n+1) {
-                margin-left: 40px;
-            }
-            &:nth-child(4n+1) {
-                margin-left: 0;
-            }
-        }
+			&:nth-child(2n) {
+				margin-left: 40px;
+			}
+			&:nth-child(3n + 1) {
+				margin-left: 40px;
+			}
+			&:nth-child(4n + 1) {
+				margin-left: 0;
+			}
+		}
 
-        .PollOption-image {
-            width: 100%;
-        }
-        
-        .PollOption-details {
-            padding: 10px;
-            background-color: white;
-            color: $color-dark-gray;
-            margin-top: -9px;
-        }
+		.PollOption-image {
+			width: 100%;
+		}
 
-        .PollOption-title {
-            // letter-spacing: 0.1em;
-            line-height: 1.1;
-            // text-transform: uppercase;
-            margin-bottom: 5px;
-        }
+		.PollOption-details {
+			padding: 10px;
+			background-color: white;
+			color: $color-accent-light;
+			margin-top: -9px;
+		}
 
-        .PollOption-genres {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            margin-bottom: 10px;
-        }
+		.PollOption-title {
+			// letter-spacing: 0.1em;
+			line-height: 1.1;
+			// text-transform: uppercase;
+			margin-bottom: 5px;
+		}
 
-        .PollOption-genre {
-            display: inline-block;
-            margin-right: 20px;
-            text-transform: uppercase;
-            font-size: 80%;
+		.PollOption-genres {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			margin-bottom: 10px;
+		}
 
-            &:last-child {
-                margin-right: 0;
-            }
-        }
+		.PollOption-genre {
+			display: inline-block;
+			margin-right: 20px;
+			text-transform: uppercase;
+			font-size: 80%;
 
-        .PollOption-trailer {
-            background: transparent;
-            border: 1px solid white;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 80%;
-            @include text_mono();
-            .PlayButton {
-                margin-left: 1em;
-                width: 1em;
-                height: 1em;
-                border-color: white;
-            }
-        }
+			&:last-child {
+				margin-right: 0;
+			}
+		}
 
-        .PollOption-vote {
-            margin-top: 10px;
-            border: 0;
-            @include text_mono();
-            padding: 10px;
-            border-radius: 20px;
+		.PollOption-trailer {
+			background: transparent;
+			border: 1px solid white;
+			color: white;
+			padding: 5px 10px;
+			border-radius: 20px;
+			font-size: 80%;
+			@include text_mono();
+			.PlayButton {
+				margin-left: 1em;
+				width: 1em;
+				height: 1em;
+				border-color: white;
+			}
+		}
 
-            @include breakpoint('lg') {
-                margin-left: 20px;
-                margin-top: 0;
-            }
-        }
+		.PollOption-vote {
+			margin-top: 10px;
+			border: 0;
+			@include text_mono();
+			padding: 10px;
+			border-radius: 20px;
 
-        .PollOption-trailer, .PollOption-vote {
-            width: 100%;
-            transition: background-color 200ms ease-in;
+			@include breakpoint("lg") {
+				margin-left: 20px;
+				margin-top: 0;
+			}
+		}
 
-            &:hover {
-                background-color: $secondary-color;
-                cursor: pointer;
-            }
+		.PollOption-trailer,
+		.PollOption-vote {
+			width: 100%;
+			transition: background-color 200ms ease-in;
 
-            @include breakpoint('lg') {
-                width: calc(50% - 10px);
-            }
-        }
-    }
+			&:hover {
+				background-color: $secondary-color;
+				cursor: pointer;
+			}
+
+			@include breakpoint("lg") {
+				width: calc(50% - 10px);
+			}
+		}
+	}
 }
