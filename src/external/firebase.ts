@@ -157,6 +157,7 @@ export async function addMovie(
 export async function setUpcomingMovie(
 	imdbId: string,
 	wallpaperUrl: string,
+	wallpaperBackgroundPosition: string,
 	watchDate: Date
 ): Promise<void> {
 	return db
@@ -165,6 +166,7 @@ export async function setUpcomingMovie(
 		.set({
 			imdbId,
 			wallpaperUrl,
+			wallpaperBackgroundPosition,
 			watchDate: firebase.firestore.Timestamp.fromDate(watchDate)
 		});
 }

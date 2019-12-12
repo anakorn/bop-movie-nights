@@ -1,31 +1,32 @@
 import { ID } from "@datorama/akita";
 
 export type App = {
-    upcomingMovie: UpcomingMovie;
-}
+	upcomingMovie: UpcomingMovie;
+};
 
 export type Movie = {
-    id: string;
-    trailerUrl: string;
-}
+	id: string;
+	trailerUrl: string;
+};
 
 export type UpcomingMovie = {
-    imdbId: string;
-    wallpaperUrl: string;
-    watchDate: Date;
+	imdbId: string;
+	wallpaperUrl: string;
+	wallpaperBackgroundPosition: string;
+	watchDate: Date;
 };
 
 export type Poll = {
-    id: string;
-    title: string;
-    options: PollOption[];
-    archived: boolean;
-    order: number;
+	id: string;
+	title: string;
+	options: PollOption[];
+	archived: boolean;
+	order: number;
 };
 
 export type PollOption = {
-    imdbId: string;
-    count: number;
-    hasVotedUids: string[];
-    submittedUid: string;
-}
+	imdbId: string;
+	count: number;
+	hasVotedUids: string[];
+	submittedUid: string;
+};

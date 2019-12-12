@@ -11,6 +11,7 @@ import "../styles/Admin.scss";
 type UpcomingMovieForm = {
 	id: string;
 	wallpaperUrl: string;
+	wallpaperBackgroundPosition: string;
 	watchDate: string;
 };
 
@@ -52,6 +53,8 @@ const Admin: React.FC = () => {
 			? {
 					id: String(upcomingMovie.imdbId || upcomingMovie.id),
 					wallpaperUrl: upcomingMovie.wallpaperUrl,
+					wallpaperBackgroundPosition:
+						upcomingMovie.wallpaperBackgroundPosition,
 					watchDate: moment(
 						upcomingMovie.watchDate.seconds * 1000
 					).toISOString()
@@ -59,6 +62,7 @@ const Admin: React.FC = () => {
 			: {
 					id: "",
 					wallpaperUrl: "",
+					wallpaperBackgroundPosition: "",
 					watchDate: ""
 			  }
 	);
@@ -189,6 +193,22 @@ const Admin: React.FC = () => {
 							wallpaperUrl: e.target.value
 						});
 					}}
+					placeholder="https://i.imgur.com/Ed9Ecae.jpg"
+				/>
+				<label htmlFor="AdminHeader-wallpaperBgPosition">
+					Wallpaper Background Position
+				</label>
+				<input
+					id="AdminHeader-wallpaperBgPosition"
+					type="text"
+					value={upcomingMovieForm.wallpaperBackgroundPosition}
+					onChange={e => {
+						setUpcomingMovieForm({
+							...upcomingMovieForm,
+							wallpaperBackgroundPosition: e.target.value
+						});
+					}}
+					placeholder="center bottom"
 				/>
 				<label htmlFor="AdminHeader-date">Watch Date</label>
 				<input
@@ -208,6 +228,7 @@ const Admin: React.FC = () => {
 						setUpcomingMovie(
 							upcomingMovieForm.id,
 							upcomingMovieForm.wallpaperUrl,
+							upcomingMovieForm.wallpaperBackgroundPosition,
 							new Date(upcomingMovieForm.watchDate)
 						);
 					}}

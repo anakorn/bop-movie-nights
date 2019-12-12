@@ -23,7 +23,12 @@ function onEmit<T>(
  */
 export function useUpcomingMovieFacade(): [
 	UpcomingMovie | null,
-	(imdbId: string, wallpaperUrl: string, watchDate: Date) => void
+	(
+		imdbId: string,
+		wallpaperUrl: string,
+		wallpaperBackgroundPosition: string,
+		watchDate: Date
+	) => void
 ] {
 	const [state, setState] = useState<UpcomingMovieState>({
 		upcomingMovie: null
