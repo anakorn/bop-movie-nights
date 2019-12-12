@@ -1,72 +1,107 @@
-@import './_util/breakpoints';
-@import './_util/typography';
-@import './_util/button';
-@import './_util/color';
+@import "./_util/breakpoints";
+@import "./_util/typography";
+@import "./_util/button";
+@import "./_util/color";
 
 .PollDetail {
-    min-height: 200px;
-    max-width: 700px;
-    text-align: center;
-    color: white;
-    margin: 20px auto;
+	min-height: 200px;
+	max-width: 700px;
+	text-align: center;
+	color: white;
+	margin: 20px auto;
 
-    .PollDetail-title {
-        @include text_utility;
-        margin-bottom: 10px;
-    }
+	.PollDetail-title {
+		@include text_utility;
+		margin-bottom: 10px;
+	}
 
-    .PollDetail-tag {
-        @include text_utility();
-        margin-right: 20px;
-        font-size: 70%;
-        &:last-child {
-            margin-right: 0;
-        }
+	.PollDetail-tag {
+		@include text_utility();
+		margin-right: 20px;
+		font-size: 70%;
+		&:last-child {
+			margin-right: 0;
+		}
 
-        @include breakpoint('md') {
-            font-size: 80%;
-        }
-    }
+		@include breakpoint("md") {
+			font-size: 80%;
+		}
+	}
 
-    .PollDetail-genre {
-        margin-right: 10px;
+	.PollDetail-genre {
+		margin-right: 10px;
 
-        &:last-child {
-            margin-right: 0;
-        }
-    }
+		&:last-child {
+			margin-right: 0;
+		}
+	}
 
-    .PollDetail-plot {
-        max-width: calc(100% - 20px);
-        margin: 10px auto;
-        font-size: 90%;
+	.PollDetail-plot {
+		max-width: calc(100% - 20px);
+		margin: 10px auto;
+		font-size: 90%;
 
-        @include breakpoint('xs') {
-            max-width: 75%;
-        }
-    }
+		@include breakpoint("xs") {
+			max-width: 75%;
+		}
+	}
 
-    button {
-        @include button();
-        color: white;
-        background-color: $color-dark-gray;
+	button {
+		@include button();
+		// color: white;
+		// background-color: $color-dark-gray;
+		color: black;
+		background-color: $color-shade-light;
 
-        &:not(:first-child) {
-            margin-left: 10px;
-        }
+		&:not(:first-child) {
+			margin-left: 10px;
+		}
 
-        &:hover,
-        &.primary,
-        &.active {
-            background-color: $color-yellow;
-            color: black;
+		.fa-star {
+			transition: 200ms transform ease;
+			transform-origin: 46% 59%;
+		}
 
-            .Star::before {
-                color: black;
-            }
-        }
-        &.primary:hover {
-            background-color: white;
-        }
-    }
+		&:hover,
+		&.primary,
+		&.active {
+			// background-color: $color-main;
+			background-color: darken(white, 5%);
+			color: black;
+
+			.fa-star {
+				transform: scale(1.3);
+			}
+
+			.Star::before {
+				// color: black;
+			}
+		}
+		&.primary:hover {
+			// background-color: white;
+		}
+
+		&.voted {
+			background-color: $color-main;
+			.fa-star {
+				animation: 1.8s spin-finish ease-out;
+				animation-fill-mode: forwards;
+			}
+		}
+	}
+}
+
+@keyframes spin-finish {
+	0% {
+		transform: scale(1.3) rotate(0);
+	}
+	70% {
+		transform: scale(1.3) rotate(360deg);
+	}
+	75% {
+		transform: scale(0.9) rotate(360deg);
+	}
+	100% {
+		transform: scale(1) rotate(360deg);
+	}
 }

@@ -1,45 +1,46 @@
-@import './_util/breakpoints';
-@import './_util/color';
-@import './_util/typography';
+@import "./_util/breakpoints";
+@import "./_util/color";
+@import "./_util/typography";
 
 .Footer {
-    text-align: center;
-    background-color: $color-basically-black;
-    color: rgba($color-light-gray, 0.6);
+	text-align: center;
+	background-color: $color-shade-dark;
+	color: $color-shade-light;
+	filter: brightness(0.6);
 
-    a {
-        color: rgba($color-light-gray, 0.6);
-        font-weight: bold;
-        transition: color 200ms ease;
+	a {
+		color: $color-shade-light;
+		font-weight: bold;
+		transition: color 200ms ease;
 
-        &:hover {
-            color: rgba($color-yellow, 0.4);
-        }
-    }
-    
-    .Container {
-        @include breakpoint('sm') {
-            padding: 30px 120px 40px;
-        }
-    }
+		&:hover {
+			color: $color-main;
+		}
+	}
 
-    .Footer-title {
-        @include text_utility();
-    }
+	.Container {
+		@include breakpoint("sm") {
+			padding: 30px 120px 40px;
+		}
+	}
 
-    .Footer-subtitle {
-        margin-bottom: 20px;
-        color: rgba($color-yellow, 0.4);
-    }
+	.Footer-title {
+		@include text_utility();
+	}
 
-    .Footer-suggestions {
-        margin-bottom: 20px;
-    }
+	.Footer-subtitle {
+		margin-bottom: 20px;
+		color: $color-main;
+	}
 
-    small {
-        @include text_mono();
-        display: block;
-        font-size: 50%;
-        margin-top: 5px;
-    }
+	.Footer-suggestions {
+		margin-bottom: 20px;
+	}
+
+	small {
+		@include text_mono();
+		display: block;
+		font-size: 50%;
+		margin-top: 5px;
+	}
 }

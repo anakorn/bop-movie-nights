@@ -1,23 +1,23 @@
-@import './_util/breakpoints';
-@import './_util/color';
+@import "./_util/breakpoints";
+@import "./_util/color";
 
 .Container {
-    padding: 20px 30px;
-    @include breakpoint('sm') {
-        padding: 80px 120px;
-    }
+	padding: 20px 30px;
+	@include breakpoint("sm") {
+		padding: 80px 120px;
+	}
 }
 
 .PollArea.Container {
-    background-color: $color-darkest-gray;
-    @include breakpoint('sm') {
-        padding: 60px 120px;
-    }
+	background-color: $color-dark;
+	@include breakpoint("sm") {
+		padding: 60px 120px;
+	}
 }
 
 .PollAreaHeader {
-    color: white;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    margin-bottom: 10px;
+	color: white;
+	text-transform: uppercase;
+	letter-spacing: 0.2em;
+	margin-bottom: 10px;
 }

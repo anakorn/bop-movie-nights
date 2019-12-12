@@ -1,85 +1,88 @@
-@import '~lightbox-react/style.css';
+@import "~lightbox-react/style.css";
 
 .ril__outer {
-    backdrop-filter: blur(3px);
+	backdrop-filter: blur(3px);
 }
 
 .ril__toolbar {
-    background-color: transparent;
+	background-color: transparent;
 }
 
 .ril-image-current.ril__image {
-    position: relative;
-    display: inline-block;
-    top: 50%;
-    left: 50%;
+	position: relative;
+	display: inline-block;
+	top: 50%;
+	left: 50%;
 }
 
 .lightbox-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
-@import './_util/breakpoints';
-@import './_util/button';
-@import './_util/color';
-@import './_util/typography';
+@import "./_util/breakpoints";
+@import "./_util/button";
+@import "./_util/color";
+@import "./_util/typography";
 
 .Lightbox-container {
-    background-color: rgba($color-yellow, 0.8);
-    color: black;
-    width: calc(100vw - 40px);
-    padding: 30px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 2px;
-    text-align: center;
+	background-color: rgba($color-main, 0.8);
+	color: black;
+	width: calc(100vw - 40px);
+	padding: 30px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 2px;
+	text-align: center;
 
-    @include breakpoint('sm') {
-        width: 500px;
-        padding: 50px;
-    }
+	@include breakpoint("sm") {
+		width: 500px;
+		padding: 50px;
+	}
 
-    small, input, button {
-        display: block;
-        margin: auto;
-    }
+	small,
+	input,
+	button {
+		display: block;
+		margin: auto;
+	}
 
-    button {
-        @include button();
-    }
+	button {
+		@include button();
+	}
 
-    input, button {
-        margin-top: 10px;
-        padding: 10px;
-        border-radius: 2px;
-    }
+	input,
+	button {
+		margin-top: 10px;
+		padding: 10px;
+		border-radius: 2px;
+	}
 
-    input {
-        @include text_mono();
-        text-align: center;
-        border: 0;
-        width: 100%;
-        font-size: 70%; 
+	input {
+		@include text_mono();
+		text-align: center;
+		border: 0;
+		width: 100%;
+		font-size: 70%;
 
-        &:disabled {
-            background-color: $color-light-gray;
-        }
+		&:disabled {
+			background-color: $color-light-gray;
+		}
 
-        @include breakpoint('xs') {
-            width: 250px;
-        }
-    }
+		@include breakpoint("xs") {
+			width: 250px;
+		}
+	}
 
-    .Lightbox-title {
-        @include text_utility();
-    }
+	.Lightbox-title {
+		@include text_utility();
+	}
 
-    .Lightbox-section {
-        margin-top: 30px;
-    }
+	.Lightbox-section {
+		margin-top: 30px;
+	}
 }

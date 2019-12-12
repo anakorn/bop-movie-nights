@@ -31,7 +31,7 @@ type NewMovieForm = {
 
 const Admin: React.FC = () => {
 	// TODO: add auth into this
-	const userIsAdmin = false;
+	const userIsAdmin = true;
 	const [useAdmin, setAdmin] = useState(false);
 	const [{ user }] = useUserFacade();
 	const [moviesState, getMovieById, addMovie] = useMoviesFacade();

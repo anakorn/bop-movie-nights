@@ -1,74 +1,83 @@
-@import './_util/color';
+@import "./_util/color";
 
 .Carousel {
-    $transition: transform 500ms ease;
-    white-space: nowrap;
-    overflow-x: hidden;
-    overflow-y: visible;
-    position: relative;
+	$transition: transform 500ms ease;
+	white-space: nowrap;
+	overflow-x: hidden;
+	overflow-y: visible;
+	position: relative;
 
-    &::before, &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 20%;
-        z-index: 2;
-        pointer-events: none;
-    }
-    &::before {
-        left: 0;
-        background: linear-gradient(to right, rgba($color-darkest-gray, 1) 0%,rgba(0,0,0,0) 100%);
-    }
-    &::after {
-        right: 0;
-        background: linear-gradient(to left, rgba($color-darkest-gray, 1) 0%,rgba(0,0,0,0) 100%);
-    }
+	&::before,
+	&::after {
+		content: "";
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		width: 20%;
+		z-index: 2;
+		pointer-events: none;
+	}
+	&::before {
+		left: 0;
+		background: linear-gradient(
+			to right,
+			rgba($color-dark, 1) 0%,
+			rgba(0, 0, 0, 0) 100%
+		);
+	}
+	&::after {
+		right: 0;
+		background: linear-gradient(
+			to left,
+			rgba($color-dark, 1) 0%,
+			rgba(0, 0, 0, 0) 100%
+		);
+	}
 
-    &:focus {
-        outline: none;
-    }
-    
-    .CarouselSlider {
-        transition: $transition;
-        display: flex;
-        align-items: center;
-    }
+	&:focus {
+		outline: none;
+	}
 
-    .CarouselImageContainer {
-        display: inline-flex;
-        position: relative;
-        perspective: 1000px;
-        transform-style: preserve-3d;
-        transition: $transition;
-        z-index: 1;
+	.CarouselSlider {
+		transition: $transition;
+		display: flex;
+		align-items: center;
+	}
 
-        &--active {
-            z-index: 2;
-        }
+	.CarouselImageContainer {
+		display: inline-flex;
+		position: relative;
+		perspective: 1000px;
+		transform-style: preserve-3d;
+		transition: $transition;
+		z-index: 1;
 
-        &--before {
-            transform: translateX(-8.5%);
-        }
+		&--active {
+			z-index: 2;
+		}
 
-        &--after {
-            transform: translateX(8.5%);
-        }
+		&--before {
+			transform: translateX(-8.5%);
+		}
 
-        &:hover {
-            cursor: pointer;
-        }
-    }
+		&--after {
+			transform: translateX(8.5%);
+		}
 
-    .CarouselImage {
-        max-width: 40vw;
-        pointer-events: none;
-        transition: $transition;
-        $image-transform: translateZ(-200px);
-        transform: $image-transform;
+		&:hover {
+			cursor: pointer;
+		}
+	}
 
-        &--active {
-            transform: translate(0);
-        }
-    }
+	.CarouselImage {
+		max-width: 40vw;
+		pointer-events: none;
+		transition: $transition;
+		$image-transform: translateZ(-200px);
+		transform: $image-transform;
+
+		&--active {
+			transform: translate(0);
+		}
+	}
 }

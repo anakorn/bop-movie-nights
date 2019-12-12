@@ -1,119 +1,115 @@
-@import './_util/color';
-@import './_util/typography';
-@import './_util/breakpoints';
+@import "./_util/color";
+@import "./_util/typography";
+@import "./_util/breakpoints";
+@import "./_util/button";
 
 @keyframes pulse {
-    to {
-        transform: scale(1.1) translate(-20px, -10px);
-    }
+	to {
+		transform: scale(1.1) translate(-20px, -10px);
+	}
 }
 
 .Header {
-    $secondary-color: #f1c40f;
-    $dark-white: #ecf0f1;
-    $middle-spacer: 60px;
+	$middle-spacer: 60px;
 
-    color: white;
-    min-height: 40vw;
-    max-height: 1500px;
-    display: flex;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
-    // opacity: 0;
-    // transition: 200ms opacity ease;
+	color: white;
+	min-height: 40vw;
+	max-height: 1500px;
+	display: flex;
+	align-items: center;
+	position: relative;
+	overflow: hidden;
+	// opacity: 0;
+	// transition: 200ms opacity ease;
 
-    // &.loaded {
-    //     opacity: 1;
-    // }
+	// &.loaded {
+	//     opacity: 1;
+	// }
 
-    .Header-background {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background-size: cover;
-        background-position: center bottom;
-        background-color: $color-darkest-gray;
-        z-index: -1;
-        filter: brightness(0.4);
-        animation: pulse 25s infinite alternate linear;
-    }
+	.Header-background {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background-size: cover;
+		background-position: center bottom;
+		background-color: $color-dark;
+		z-index: -1;
+		filter: brightness(0.4);
+		animation: pulse 25s infinite alternate linear;
+	}
 
-    .Header-title {
-        text-align: left;
-        text-shadow: 1px 1px 3px #000000a3;
-    }
+	.Header-title {
+		text-align: left;
+		text-shadow: 1px 1px 3px #000000a3;
+	}
 
-    .Header-subtitle {
-        @include text_mono();
-        color: black;
-        background-color: $secondary-color;
-        border-radius: 2px;
-        padding: 10px;
-        display: inline-block;
-        margin-top: $middle-spacer;
-    }
+	.Header-subtitle {
+		@include text_mono();
+		color: $color-dark;
+		background-color: $color-main;
+		border-radius: 2px;
+		padding: 10px;
+		display: inline-block;
+		margin-top: $middle-spacer;
+	}
 
-    .Header-trailer {
-        @include text_mono();
+	.Header-trailer {
+		@include button();
 
-        background-color: white;
-        color: black;
-        border: 2px solid white;
-        border-radius: 2px;
-        padding: 8px 18px;
-        margin-top: 15px;
-        margin-bottom: $middle-spacer;
-        transition: background-color 200ms ease-in;
+		padding: 8px 18px;
+		margin-top: 15px;
+		margin-bottom: $middle-spacer;
+		background-color: $color-shade-light;
 
-        .PlayButton {
-            border-color: black;
-            margin-left: 0.75em;
-        }
+		&:hover {
+			background-color: darken(white, 5%);
+		}
 
-        &:hover {
-            cursor: pointer;
-            background-color: $dark-white;
-        }
-        
-    }
+		.PlayButton {
+			border-color: black;
+			margin-left: 0.75em;
+		}
+	}
 
-    .Header-text-container {
-        @include breakpoint('sm') {
-            max-width: 50vw;
-        }
-    }
+	.Header-text-container {
+		@include breakpoint("sm") {
+			max-width: 50vw;
+		}
+	}
 
-    .Header-plot {
-        margin-bottom: 5px;
-        text-shadow: 1px 1px 3px #000000a3;
-    }
+	.Header-plot {
+		margin-bottom: 5px;
+		text-shadow: 1px 1px 3px #000000a3;
+	}
 
-    .Header-website {
-        padding-left: 5px;
-        text-shadow: 1px 1px 3px #000000a3;
-        color: white;
-        transition: color 200ms ease-in;
-        &:hover {
-            color: $dark-white;
-        }
-    }
+	.Header-website {
+		padding-left: 5px;
+		text-shadow: 1px 1px 3px #000000a3;
+		color: $color-shade-light;
+		transition: color 200ms ease-in;
+		&:hover {
+			color: darken(white, 10%);
+		}
+	}
 
-    .Header-genre, .Header-rating, .Header-runtime {
-        display: inline-block;
-        padding: 0 15px 0 0;
-        text-shadow: 1px 1px 3px #000000a3;
-    }
+	.Header-genre,
+	.Header-rating,
+	.Header-runtime {
+		display: inline-block;
+		padding: 0 15px 0 0;
+		text-shadow: 1px 1px 3px #000000a3;
+	}
 
-    .Header-genre {
-        @include text_utility();
-        font-weight: bold;
-        text-shadow: 1px 1px 3px #000000a3;
-    }
+	.Header-genre {
+		@include text_utility();
+		font-weight: bold;
+		text-shadow: 1px 1px 3px #000000a3;
+	}
 
-    .Header-rating, .Header-runtime {
-        @include text_utility();
-    }
+	.Header-rating,
+	.Header-runtime {
+		@include text_utility();
+	}
 }

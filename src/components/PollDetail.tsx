@@ -94,7 +94,7 @@ const PollDetail: React.FC<PollDetailProps> = ({
 					(userState.user ? (
 						<button
 							onClick={hasVotedForActiveOption() ? handleRemove : handleSave}
-							className={`${hasVotedForActiveOption() ? "active" : ""}`}
+							className={`${hasVotedForActiveOption() ? "active voted" : ""}`}
 						>
 							<i className="fas fa-star" style={{ marginRight: 4 }} />
 							<span>({count || 0})</span>

@@ -1,21 +1,24 @@
-@import './color';
-@import './typography';
+@import "./color";
+@import "./typography";
 
 @mixin button() {
-    @include text_mono();
-    background-color: white;
-    color: black;
-    border: 0;
-    border-radius: 2px;
-    padding: 8px 18px;
-    margin-top: 15px;
-    transition: background-color 200ms ease-in;
-    &:hover {
-        cursor: pointer;
-        background-color: $color-dark-white;
-    }
-    &:disabled {
-        cursor: not-allowed;
-        background-color: $color-light-gray;
-    }
+	@include text_mono();
+	background-color: $color-main;
+	color: black;
+	border: 0;
+	border-radius: 2px;
+	padding: 8px 18px;
+	margin-top: 15px;
+	transition: background-color 100ms ease-in;
+	&:hover {
+		cursor: pointer;
+		background-color: lighten($color-main, 10%);
+	}
+	&:active {
+		transform: translateY(1px);
+	}
+	&.disabled {
+		cursor: not-allowed;
+		background-color: $color-light-gray;
+	}
 }

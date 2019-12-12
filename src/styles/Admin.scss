@@ -2,7 +2,7 @@
 @import "./_util/button";
 @import "./_util/breakpoints";
 
-$admin-color: #f368e0;
+$admin-color: $color-accent-dark;
 
 .Admin {
 	position: fixed;
