@@ -8,55 +8,65 @@ import { tap } from "rxjs/operators";
 import shuffle from "lodash.shuffle";
 
 export class PollsService {
-    constructor(private pollsStore: PollsStore) {}
+	constructor(private pollsStore: PollsStore) {}
 
-    load(): Subscription {
-        return polls$.subscribe(polls => {
-            this.pollsStore.set(polls.map((poll): Poll => ({
-                id: poll.id,
-                title: poll.title,
-                options: poll.options.map((option): PollOption => ({
-                    imdbId: option.imdbId,
-                    count: option.count,
-                    hasVotedUids: option.hasVotedUids,
-                    submittedUid: option.submittedUid
-                })),
-                archived: poll.archived,
-                order: poll.order
-            })));
-        });
-    }
+	load(): Subscription {
+		return polls$.subscribe(polls => {
+			this.pollsStore.set(
+				polls.map(
+					(poll): Poll => ({
+						id: poll.id,
+						title: poll.title,
+						options: poll.options.map(
+							(option): PollOption => ({
+								imdbId: option.imdbId,
+								count: option.count,
+								hasVotedUids: option.hasVotedUids,
+								submittedUid: option.submittedUid
+							})
+						),
+						archived: poll.archived,
+						order: poll.order
+					})
+				)
+			);
+		});
+	}
 
-    loadPollOptionOrder(): Subscription {
-        return combineLatest(polls$, pollsQuery.pollOptionOrderMap$)
-            .pipe(
-                // filter(([polls, pollOptionOrderMap]) => polls.filter(poll => !pollOptionOrderMap[poll.id]).length > 0),
-                tap(([polls, pollOptionOrderMap]) => {
-                    polls
-                        // ignore already ordered polls
-                        .filter(poll => !pollOptionOrderMap[poll.id])
-                        .forEach(poll => {
-                            this.setPollOptionOrder(
-                                poll.id,
-                                shuffle(poll.options).map(poll => poll.imdbId)
-                            );
-                        });
-                })
-            )
-            .subscribe();
-    }
+	loadPollOptionOrder(): Subscription {
+		return combineLatest(polls$, pollsQuery.pollOptionOrderMap$)
+			.pipe(
+				// filter(([polls, pollOptionOrderMap]) => polls.filter(poll => !pollOptionOrderMap[poll.id]).length > 0),
+				tap(([polls, pollOptionOrderMap]) => {
+					polls
+						// ignore already ordered polls, unless those polls have new options
+						.filter(
+							poll =>
+								!pollOptionOrderMap[poll.id] ||
+								pollOptionOrderMap[poll.id].length < poll.options.length
+						)
+						.forEach(poll => {
+							this.setPollOptionOrder(
+								poll.id,
+								shuffle(poll.options).map(poll => poll.imdbId)
+							);
+						});
+				})
+			)
+			.subscribe();
+	}
 
-    setActive(id: ID): void {
-        this.pollsStore.setActive(id);
-    }
+	setActive(id: ID): void {
+		this.pollsStore.setActive(id);
+	}
 
-    setActiveOption(option: PollOption | null) {
-        this.pollsStore.setActiveOption(option);
-    }
+	setActiveOption(option: PollOption | null) {
+		this.pollsStore.setActiveOption(option);
+	}
 
-    setPollOptionOrder(id: string, order: PollOptionOrder) {
-        this.pollsStore.setPollOptionOrder(id, order);
-    }
+	setPollOptionOrder(id: string, order: PollOptionOrder) {
+		this.pollsStore.setPollOptionOrder(id, order);
+	}
 }
 
 export const pollsService = new PollsService(pollsStore);
