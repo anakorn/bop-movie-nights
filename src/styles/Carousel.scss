@@ -3,7 +3,8 @@
 .Carousel {
     $transition: transform 500ms ease;
     white-space: nowrap;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: visible;
     position: relative;
 
     &::before, &::after {
@@ -47,11 +48,11 @@
         }
 
         &--before {
-            transform: translateX(12.5%);
+            transform: translateX(-8.5%);
         }
 
         &--after {
-            transform: translateX(-12.5%);
+            transform: translateX(8.5%);
         }
 
         &:hover {
@@ -63,11 +64,11 @@
         max-width: 40vw;
         pointer-events: none;
         transition: $transition;
-        $image-transform: scale(0.9) translateZ(-200px);
+        $image-transform: translateZ(-200px);
         transform: $image-transform;
 
         &--active {
-            transform: scale(1) translate(0);
+            transform: translate(0);
         }
     }
 }

@@ -32,8 +32,8 @@ const Carousel: React.FC<CarouselProps> = ({
         <div className={classNames(
                 'CarouselImageContainer',
                 {'CarouselImageContainer--active': index === activeIndex},
-                {'CarouselImageContainer--before': index < activeIndex -1},
-                {'CarouselImageContainer--after': index > activeIndex + 1}
+                {'CarouselImageContainer--before': index < activeIndex},
+                {'CarouselImageContainer--after': index > activeIndex}
             )}
             data-index={index}
             key={`${img.alt}-${index}`}
