@@ -101,9 +101,9 @@ export async function addPollOption(
 	submittedUid: string
 ) {
 	return updatePollOptions(pollId, (options: PollOption[]) => {
-		if (options.find(option => option.submittedUid === submittedUid)) {
+		if (options.find(option => option.imdbId === imdbId)) {
 			throw new Error(
-				`User ${submittedUid} has already submitted movie ${imdbId} in poll ${pollId}`
+				`Movie ${imdbId} has already been submitted to poll ${pollId}`
 			);
 		}
 		return options.concat([
