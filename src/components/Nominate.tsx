@@ -64,7 +64,7 @@ const NominateForm: React.FC<NominateFormProps> = ({ onSubmit, user }) => {
 				<small>
 					https://www.imdb.com/title/<em>id</em>
 				</small>
-				<input autoFocus id="nominate-id" type="text" placeholder="tt5311514" />
+				<input autoFocus required id="nominate-id" type="text" placeholder="tt5311514" minLength={9} maxLength={9}  />
 			</div>
 			<div className="Lightbox-section">
 				<h3>
@@ -80,6 +80,7 @@ const NominateForm: React.FC<NominateFormProps> = ({ onSubmit, user }) => {
 					id="nominate-trailer"
 					type="text"
 					placeholder="https://www.youtube.com/watch?v=xU47nhruN-Q"
+					required 
 				/>
 			</div>
 			<div className="Lightbox-section">

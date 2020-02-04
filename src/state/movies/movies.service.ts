@@ -39,9 +39,11 @@ export class MoviesService {
 			.subscribe(movie => {
 				this.moviesStore.upsert(movie.omdb.imdbID, {
 					id: movie.omdb.imdbID,
-					genre: movie.omdb.Genre.split(",").map((genre: string) =>
-						genre.trim()
-					),
+					genre: movie.omdb.Genre
+						? movie.omdb.Genre.split(",").map((genre: string) =>
+							genre.trim()
+						)
+						: [],
 					plot: movie.omdb.Plot,
 					poster: movie.omdb.Poster,
 					rated: movie.omdb.Rated,

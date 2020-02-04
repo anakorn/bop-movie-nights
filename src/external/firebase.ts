@@ -12,6 +12,17 @@ const app = firebase.initializeApp({
 	messagingSenderId: "116248761122",
 	appId: "1:116248761122:web:3dcc0a01f7a71fa7ac4b7b"
 });
+// qa
+// const app = firebase.initializeApp({
+// 	apiKey: "AIzaSyBW6r7sGtozQdCjG33tm2YKxcYadIcknxM",
+// 	authDomain: "bop-movie-nights-qa.firebaseapp.com",
+// 	databaseURL: "https://bop-movie-nights-qa.firebaseio.com",
+// 	projectId: "bop-movie-nights-qa",
+// 	storageBucket: "bop-movie-nights-qa.appspot.com",
+// 	messagingSenderId: "280919696814",
+// 	appId: "1:280919696814:web:96d8eaa3c5d1f838b4943f"
+// });
+
 const db = app.firestore();
 
 export const upcomingMovie$ = docData<UpcomingMovie>(
